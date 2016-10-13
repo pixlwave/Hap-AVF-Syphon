@@ -8,7 +8,7 @@ class ViewController: NSViewController {
     
     var player: AVPlayer?
     var hapOutput = AVPlayerItemHapDXTOutput()
-    var buffer = HapPixelBufferTexture()
+    var buffer: HapPixelBufferTexture!
     var size = NSSize(width: 512, height: 512)
     var textureSize = NSSize(width: 512, height: 512)
     var syphonServer: SyphonServer?
@@ -29,12 +29,13 @@ class ViewController: NSViewController {
         
         syphonServer = SyphonServer(name: "Video", context: context!.cglContextObj, options: nil)
         
-        player = AVPlayer(url: Bundle.main.url(forResource: "video_hap", withExtension: "mov")!)
-        player?.actionAtItemEnd = .none
+        buffer = HapPixelBufferTexture(context: context?.cglContextObj)
         
         hapOutput.suppressesPlayerRendering = true
-        player?.currentItem?.add(hapOutput)
         
+        player = AVPlayer(url: Bundle.main.url(forResource: "video_hap", withExtension: "mov")!)
+        player?.actionAtItemEnd = .none
+        player?.currentItem?.add(hapOutput)
         player?.play()
     }
     
@@ -42,11 +43,8 @@ class ViewController: NSViewController {
         let outputTime = hapOutput.itemTime(forHostTime: CACurrentMediaTime())
         
         if let dxtFrame = hapOutput.allocFrameClosest(to: outputTime) {
-            if let hapTexture = HapPixelBufferTexture(context: context?.cglContextObj) {
-                size = dxtFrame.imgSize
-                hapTexture.decodedFrame = dxtFrame
-                buffer = hapTexture
-            }
+            size = dxtFrame.imgSize
+            buffer.decodedFrame = dxtFrame
         }
         
         if buffer.textureCount > 0 {
