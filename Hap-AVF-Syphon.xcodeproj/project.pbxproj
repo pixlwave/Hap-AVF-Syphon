@@ -12,11 +12,20 @@
 		A58EA0091DAFB0B200895E26 /* HapInAVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58EA0071DAFB09800895E26 /* HapInAVFoundation.framework */; };
 		A58EA00A1DAFB0B200895E26 /* HapInAVFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A58EA0071DAFB09800895E26 /* HapInAVFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A58EA00E1DAFB28100895E26 /* video_hap.mov in Resources */ = {isa = PBXBuildFile; fileRef = A58EA00D1DAFB28100895E26 /* video_hap.mov */; };
-		A58EA0111DAFB52800895E26 /* HapPixelBufferTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = A58EA0101DAFB52800895E26 /* HapPixelBufferTexture.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A590FDF01C51775B000BED4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A590FDEF1C51775B000BED4A /* AppDelegate.swift */; };
 		A590FDF21C51775B000BED4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A590FDF11C51775B000BED4A /* ViewController.swift */; };
 		A590FDF41C51775B000BED4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A590FDF31C51775B000BED4A /* Assets.xcassets */; };
 		A590FDF71C51775B000BED4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A590FDF51C51775B000BED4A /* Main.storyboard */; };
+		A595A7641DB3C35100F0E1E4 /* DDMathParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A595A75C1DB3C2F900F0E1E4 /* DDMathParser.framework */; };
+		A595A7651DB3C35100F0E1E4 /* DDMathParser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A595A75C1DB3C2F900F0E1E4 /* DDMathParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A595A7661DB3C35100F0E1E4 /* VVBasics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A595A75D1DB3C2F900F0E1E4 /* VVBasics.framework */; };
+		A595A7671DB3C35100F0E1E4 /* VVBasics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A595A75D1DB3C2F900F0E1E4 /* VVBasics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A595A7681DB3C35100F0E1E4 /* VVBufferPool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A595A75E1DB3C2F900F0E1E4 /* VVBufferPool.framework */; };
+		A595A7691DB3C35100F0E1E4 /* VVBufferPool.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A595A75E1DB3C2F900F0E1E4 /* VVBufferPool.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A595A76A1DB3C35100F0E1E4 /* VVISFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A595A75F1DB3C2F900F0E1E4 /* VVISFKit.framework */; };
+		A595A76B1DB3C35100F0E1E4 /* VVISFKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A595A75F1DB3C2F900F0E1E4 /* VVISFKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5DCC2EA1DB3F3E3002EF9B5 /* SampleVVBufferPoolAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DCC2E91DB3F3E3002EF9B5 /* SampleVVBufferPoolAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5DCC2EC1DB3FA16002EF9B5 /* Passthrough.fs in Resources */ = {isa = PBXBuildFile; fileRef = A5DCC2EB1DB3FA16002EF9B5 /* Passthrough.fs */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,8 +35,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A595A7691DB3C35100F0E1E4 /* VVBufferPool.framework in Embed Frameworks */,
+				A595A7651DB3C35100F0E1E4 /* DDMathParser.framework in Embed Frameworks */,
 				A53624FF1C518F9500A0AB61 /* Syphon.framework in Embed Frameworks */,
 				A58EA00A1DAFB0B200895E26 /* HapInAVFoundation.framework in Embed Frameworks */,
+				A595A76B1DB3C35100F0E1E4 /* VVISFKit.framework in Embed Frameworks */,
+				A595A7671DB3C35100F0E1E4 /* VVBasics.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,8 +50,6 @@
 /* Begin PBXFileReference section */
 		A58EA0071DAFB09800895E26 /* HapInAVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HapInAVFoundation.framework; sourceTree = "<group>"; };
 		A58EA00D1DAFB28100895E26 /* video_hap.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video_hap.mov; sourceTree = "<group>"; };
-		A58EA00F1DAFB52800895E26 /* HapPixelBufferTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HapPixelBufferTexture.h; sourceTree = "<group>"; };
-		A58EA0101DAFB52800895E26 /* HapPixelBufferTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HapPixelBufferTexture.m; sourceTree = "<group>"; };
 		A590FDEC1C51775B000BED4A /* Hap-AVF-Syphon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hap-AVF-Syphon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A590FDEF1C51775B000BED4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A590FDF11C51775B000BED4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +58,13 @@
 		A590FDF81C51775B000BED4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A590FDFE1C517795000BED4A /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Syphon.framework; sourceTree = "<group>"; };
 		A590FE001C5177AF000BED4A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = SOURCE_ROOT; };
+		A595A75C1DB3C2F900F0E1E4 /* DDMathParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DDMathParser.framework; sourceTree = "<group>"; };
+		A595A75D1DB3C2F900F0E1E4 /* VVBasics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VVBasics.framework; sourceTree = "<group>"; };
+		A595A75E1DB3C2F900F0E1E4 /* VVBufferPool.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VVBufferPool.framework; sourceTree = "<group>"; };
+		A595A75F1DB3C2F900F0E1E4 /* VVISFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VVISFKit.framework; sourceTree = "<group>"; };
+		A5DCC2E81DB3F3E3002EF9B5 /* SampleVVBufferPoolAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleVVBufferPoolAdditions.h; sourceTree = "<group>"; };
+		A5DCC2E91DB3F3E3002EF9B5 /* SampleVVBufferPoolAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleVVBufferPoolAdditions.m; sourceTree = "<group>"; };
+		A5DCC2EB1DB3FA16002EF9B5 /* Passthrough.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Passthrough.fs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +72,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A595A7681DB3C35100F0E1E4 /* VVBufferPool.framework in Frameworks */,
+				A595A7641DB3C35100F0E1E4 /* DDMathParser.framework in Frameworks */,
 				A53624FE1C518F9500A0AB61 /* Syphon.framework in Frameworks */,
 				A58EA0091DAFB0B200895E26 /* HapInAVFoundation.framework in Frameworks */,
+				A595A76A1DB3C35100F0E1E4 /* VVISFKit.framework in Frameworks */,
+				A595A7661DB3C35100F0E1E4 /* VVBasics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +90,10 @@
 				A590FDEE1C51775B000BED4A /* Hap-AVF-Syphon */,
 				A590FDED1C51775B000BED4A /* Products */,
 				A590FE001C5177AF000BED4A /* BridgingHeader.h */,
+				A595A75C1DB3C2F900F0E1E4 /* DDMathParser.framework */,
+				A595A75D1DB3C2F900F0E1E4 /* VVBasics.framework */,
+				A595A75E1DB3C2F900F0E1E4 /* VVBufferPool.framework */,
+				A595A75F1DB3C2F900F0E1E4 /* VVISFKit.framework */,
 				A58EA0071DAFB09800895E26 /* HapInAVFoundation.framework */,
 				A590FDFE1C517795000BED4A /* Syphon.framework */,
 			);
@@ -90,8 +116,9 @@
 				A590FDF51C51775B000BED4A /* Main.storyboard */,
 				A590FDF81C51775B000BED4A /* Info.plist */,
 				A58EA00D1DAFB28100895E26 /* video_hap.mov */,
-				A58EA00F1DAFB52800895E26 /* HapPixelBufferTexture.h */,
-				A58EA0101DAFB52800895E26 /* HapPixelBufferTexture.m */,
+				A5DCC2E81DB3F3E3002EF9B5 /* SampleVVBufferPoolAdditions.h */,
+				A5DCC2E91DB3F3E3002EF9B5 /* SampleVVBufferPoolAdditions.m */,
+				A5DCC2EB1DB3FA16002EF9B5 /* Passthrough.fs */,
 			);
 			path = "Hap-AVF-Syphon";
 			sourceTree = "<group>";
@@ -156,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A58EA00E1DAFB28100895E26 /* video_hap.mov in Resources */,
+				A5DCC2EC1DB3FA16002EF9B5 /* Passthrough.fs in Resources */,
 				A590FDF41C51775B000BED4A /* Assets.xcassets in Resources */,
 				A590FDF71C51775B000BED4A /* Main.storyboard in Resources */,
 			);
@@ -169,7 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A590FDF21C51775B000BED4A /* ViewController.swift in Sources */,
-				A58EA0111DAFB52800895E26 /* HapPixelBufferTexture.m in Sources */,
+				A5DCC2EA1DB3F3E3002EF9B5 /* SampleVVBufferPoolAdditions.m in Sources */,
 				A590FDF01C51775B000BED4A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
