@@ -52,10 +52,12 @@ class ViewController: NSViewController {
         
         if let buffer = buffer {
             isfScene.setFilterInputImageBuffer(buffer)
-            if let output = isfScene.allocAndRender(toBufferSized: size) {
-                syphonServer?.publishFrameTexture(output.name, textureTarget: output.target, imageRegion: NSRect(origin: CGPoint(x: 0, y: 0), size: size), textureDimensions: size, flipped: true)
+            if let isfOutput = isfScene.allocAndRender(toBufferSized: size) {
+                syphonServer?.publishFrameTexture(isfOutput.name, textureTarget: isfOutput.target, imageRegion: NSRect(origin: CGPoint(x: 0, y: 0), size: size), textureDimensions: size, flipped: isfOutput.flipped)
             }
         }
+        
+        globalBufferPool.housekeeping()
     }
     
     @IBAction func rewind(_ sender: AnyObject) {
