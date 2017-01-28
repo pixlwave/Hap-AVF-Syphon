@@ -8,15 +8,13 @@ class ViewController: NSViewController {
     
     var globalBufferPool: VVBufferPool!
     var isfScene: ISFGLScene!
-    var buffer: VVBuffer?
     
     var player: AVPlayer?
     var hapOutput = AVPlayerItemHapDXTOutput()
     var emptyFrame: HapDecoderFrame?
     var bufferArray: [VVBuffer]?
     var dxtFrame: HapDecoderFrame?
-    var size = NSSize(width: 512, height: 512)
-    var textureSize = NSSize(width: 512, height: 512)
+    var size = NSSize(width: 640, height: 360)
     var syphonServer: SyphonServer?
     
     override func viewDidLoad() {
@@ -82,7 +80,7 @@ class ViewController: NSViewController {
         if let buffer = bufferArray?.first {
             isfScene.setFilterInputImageBuffer(buffer)
             if let isfOutput = isfScene.allocAndRender(toBufferSized: size) {
-                syphonServer?.publishFrameTexture(isfOutput.name, textureTarget: isfOutput.target, imageRegion: NSRect(origin: CGPoint(x: 0, y: 0), size: size), textureDimensions: size, flipped: isfOutput.flipped)
+                syphonServer?.publishFrameTexture(isfOutput.name, textureTarget: isfOutput.target, imageRegion: isfOutput.srcRect, textureDimensions: isfOutput.size, flipped: isfOutput.flipped)
             }
         }
         
