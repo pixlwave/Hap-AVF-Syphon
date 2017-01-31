@@ -37,32 +37,30 @@ class ViewController: NSViewController {
         
         //	make the decoder frame alocator block: i want to create a frame that will decode into a texture range- RAM that is mapped directly to VRAM and uploads via DMA
         hapOutput.setAllocFrameBlock { decompressMe -> HapDecoderFrame? in
-            let emptyFrame: HapDecoderFrame?
-            if decompressMe != nil {
-                //	make an empty decoder frame from the buffer (the basic fields describing the data properties of the DXT frame are populated, but no memory is allocated to decompress the DXT into)
-                emptyFrame = HapDecoderFrame(emptyWithHapSampleBuffer: decompressMe)
-                //	make a CPU-backed/tex range VVBuffers for each plane in the decoder frame
-                if let bufferArray = self.globalBufferPool.createBuffers(for: emptyFrame) as? [VVBuffer] {
-                    //	populate the hap decoder frame i'll be returning with the CPU-based memory from the buffer, and ensure that the decoder will retain the buffers (this has to be done for each plane in the frame)
-                    for (i, buffer) in bufferArray.enumerated() {
-                        emptyFrame?.dxtDatas[i] = buffer.cpuBackingPtr()
-                        emptyFrame?.dxtDataSizes[i] = Int(VVBufferDescriptorCalculateCPUBackingForSize(buffer.descriptorPtr(), buffer.backingSize))
-                    }
-                    //	add the array of buffers to the frame's userInfo- we want the frame to retain the array of buffers...
-                    emptyFrame?.userInfo = bufferArray
-                    
-                    return emptyFrame
-                }
+            guard let decompressMe = decompressMe else { return nil }
+            
+            //	make an empty decoder frame from the buffer (the basic fields describing the data properties of the DXT frame are populated, but no memory is allocated to decompress the DXT into)
+            guard let emptyFrame = HapDecoderFrame(emptyWithHapSampleBuffer: decompressMe) else { return nil }
+                
+            //	make a CPU-backed/tex range VVBuffers for each plane in the decoder frame
+            guard let bufferArray = self.globalBufferPool.createBuffers(for: emptyFrame) as? [VVBuffer] else { return nil }
+            
+            //	populate the hap decoder frame i'll be returning with the CPU-based memory from the buffer, and ensure that the decoder will retain the buffers (this has to be done for each plane in the frame)
+            for (i, buffer) in bufferArray.enumerated() {
+                emptyFrame.dxtDatas[i] = buffer.cpuBackingPtr()
+                emptyFrame.dxtDataSizes[i] = Int(VVBufferDescriptorCalculateCPUBackingForSize(buffer.descriptorPtr(), buffer.backingSize))
             }
-            return nil
+            
+            //	add the array of buffers to the frame's userInfo- we want the frame to retain the array of buffers...
+            emptyFrame.userInfo = bufferArray
+            
+            return emptyFrame
         }
         
         //	make the post decode block: after decoding, i want to upload the DXT data to a GL texture via DMA, on the decode thread
-        let tmpBlock: AVFHapDXTPostDecodeBlock = { [weak self] decodedFrame in
-            self?.finishDecodingHapFrame(decodedFrame)
+        hapOutput.setPostDecode { [weak self] decodedFrame in
+                self?.finishDecodingHapFrame(decodedFrame)
         }
-        
-        hapOutput.setPostDecode(tmpBlock)
         
         player = AVPlayer(url: Bundle.main.url(forResource: "video_hap", withExtension: "mov")!)
         player?.actionAtItemEnd = .none
