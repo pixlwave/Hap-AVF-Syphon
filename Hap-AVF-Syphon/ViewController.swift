@@ -68,7 +68,7 @@ class ViewController: NSViewController {
         player?.play()
     }
     
-    func screenRefresh() {
+    @objc func screenRefresh() {
         objc_sync_enter(self)       // closest to objc @synchronised self?
             let frameTime = hapOutput.itemTime(forMachAbsoluteTime: Int64(mach_absolute_time()))
             let dxtFrame = hapOutput.allocFrameClosest(to: frameTime)
