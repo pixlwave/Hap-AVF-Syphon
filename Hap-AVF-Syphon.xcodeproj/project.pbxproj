@@ -332,7 +332,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Hap-AVF-Syphon";
 				PRODUCT_NAME = "Hap-AVF-Syphon";
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -352,7 +351,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Hap-AVF-Syphon";
 				PRODUCT_NAME = "Hap-AVF-Syphon";
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
