@@ -4,6 +4,7 @@
 #import "VVThreadLoop.h"
 #import "VVAssertionHandler.h"
 #import "VVStopwatch.h"
+#import "VVMStopwatch.h"
 #import "ObjectHolder.h"
 #import "MutLockArray.h"
 #import "MutLockDict.h"
@@ -12,7 +13,7 @@
 
 #if !TARGET_OS_IPHONE
 	#import "VVCURLDL.h"
-	#import "VVCrashReporter.h"
+	//#import "VVCrashReporter.h"
 	//#import "NSHostAdditions.h"
 	#import "VVSysVersion.h"
 #endif

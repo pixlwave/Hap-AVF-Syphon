@@ -26,7 +26,7 @@
 #import "VVSizingTool.h"
 #import "GLScene.h"
 #import "GLShaderScene.h"
-#import "CIGLScene.h"
+//#import "CIGLScene.h"
 #import "VVBufferCopier.h"
 
 #if !TARGET_OS_IPHONE
@@ -55,9 +55,10 @@
 extern id				_globalVVBufferPool;	//	retained, nil on launch- this is the "main" buffer pool, used to generate image resources for hardware-accelerated image processing.  can't be created automatically, b/c it needs to be based on a shared context.
 #if !TARGET_OS_IPHONE
 extern int				_msaaMaxSamples;
+extern int				_glMaxTextureDimension;
 #endif	//	!TARGET_OS_IPHONE
 extern BOOL			_bufferPoolInitialized;
-extern VVStopwatch	*_bufferTimestampMaker;
+extern VVMStopwatch	*_bufferTimestampMaker;
 
 
 
@@ -100,6 +101,7 @@ Returns the max number of MSAA samples that can be taken with the GL renderer cu
 @param n The NSOpenGLContext you want the buffer pool to share.  This context should not be freed as long as VVBufferPool exists!
 */
 #if !TARGET_OS_IPHONE
++ (void) createGlobalVVBufferPoolWithSharedContext:(NSOpenGLContext *)n	pixelFormat:(NSOpenGLPixelFormat*)p;
 + (void) createGlobalVVBufferPoolWithSharedContext:(NSOpenGLContext *)n;
 #else	//	NOT !TARGET_OS_IPHONE
 + (void) createGlobalVVBufferPoolWithSharegroup:(EAGLSharegroup *)n;
@@ -147,11 +149,11 @@ Returns the max number of MSAA samples that can be taken with the GL renderer cu
 - (VVBuffer *) allocFBO;
 #if !TARGET_OS_IPHONE
 ///	Allocates and returns a VVBuffer instance that represents an OpenGL texture.  Specifically, returns an 8-bit per channel RECT texture with a BGRA internal format.
-- (VVBuffer *) allocBGRTexSized:(VVSIZE)s;
-#endif
 /**
 @param s The size of the texture you want to create, in pixels, as an VVSIZE structure
 */
+- (VVBuffer *) allocBGRTexSized:(VVSIZE)s;
+#endif
 ///	Allocates and returns a VVBuffer instance that represents an OpenGL texture.  Specifically, returns an 8-bit per channel 2D texture with a BGRA internal format.
 /**
 @param s The size of the texture you want to create, in pixels, as an VVSIZE structure.
@@ -306,6 +308,7 @@ Returns the max number of MSAA samples that can be taken with the GL renderer cu
 - (VVBuffer *) allocRGBACPUBackedTexRangeSized:(NSSize)s;
 - (VVBuffer *) allocBGRACPUBackedTexRangeSized:(NSSize)s;
 - (VVBuffer *) allocBGRAFloatCPUBackedTexRangeSized:(NSSize)s;
+- (VVBuffer *) allocYCbCrCPUBackedTexRangeSized:(NSSize)s;
 
 //	these methods make VVBuffers using DMA GL textures from image objects created by other APIs
 - (VVBuffer *) allocTexRangeForCMSampleBuffer:(CMSampleBufferRef)n;
