@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A57968D620FF1414005A4383 /* HapInAVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57968D520FF1413005A4383 /* HapInAVFoundation.framework */; };
+		A57968D720FF1414005A4383 /* HapInAVFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A57968D520FF1413005A4383 /* HapInAVFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5854B4920FCEE7600DD7DEE /* VVISFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5854B4520FCEE7500DD7DEE /* VVISFKit.framework */; };
 		A5854B4A20FCEE7600DD7DEE /* VVISFKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5854B4520FCEE7500DD7DEE /* VVISFKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5854B4B20FCEE7600DD7DEE /* DDMathParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5854B4620FCEE7500DD7DEE /* DDMathParser.framework */; };
@@ -15,8 +17,6 @@
 		A5854B4E20FCEE7600DD7DEE /* VVBasics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5854B4720FCEE7500DD7DEE /* VVBasics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5854B4F20FCEE7600DD7DEE /* VVBufferPool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5854B4820FCEE7600DD7DEE /* VVBufferPool.framework */; };
 		A5854B5020FCEE7600DD7DEE /* VVBufferPool.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5854B4820FCEE7600DD7DEE /* VVBufferPool.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A5854B5220FCEEAD00DD7DEE /* HapInAVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5854B5120FCEEAD00DD7DEE /* HapInAVFoundation.framework */; };
-		A5854B5320FCEEAD00DD7DEE /* HapInAVFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5854B5120FCEEAD00DD7DEE /* HapInAVFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5854B5520FCEED300DD7DEE /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5854B5420FCEED300DD7DEE /* Syphon.framework */; };
 		A5854B5620FCEED300DD7DEE /* Syphon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5854B5420FCEED300DD7DEE /* Syphon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A58EA00E1DAFB28100895E26 /* video_hap.mov in Resources */ = {isa = PBXBuildFile; fileRef = A58EA00D1DAFB28100895E26 /* video_hap.mov */; };
@@ -35,8 +35,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A5854B5320FCEEAD00DD7DEE /* HapInAVFoundation.framework in Embed Frameworks */,
 				A5854B5620FCEED300DD7DEE /* Syphon.framework in Embed Frameworks */,
+				A57968D720FF1414005A4383 /* HapInAVFoundation.framework in Embed Frameworks */,
 				A5854B4C20FCEE7600DD7DEE /* DDMathParser.framework in Embed Frameworks */,
 				A5854B5020FCEE7600DD7DEE /* VVBufferPool.framework in Embed Frameworks */,
 				A5854B4A20FCEE7600DD7DEE /* VVISFKit.framework in Embed Frameworks */,
@@ -48,11 +48,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A57968D520FF1413005A4383 /* HapInAVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HapInAVFoundation.framework; sourceTree = "<group>"; };
 		A5854B4520FCEE7500DD7DEE /* VVISFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VVISFKit.framework; sourceTree = "<group>"; };
 		A5854B4620FCEE7500DD7DEE /* DDMathParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DDMathParser.framework; sourceTree = "<group>"; };
 		A5854B4720FCEE7500DD7DEE /* VVBasics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VVBasics.framework; sourceTree = "<group>"; };
 		A5854B4820FCEE7600DD7DEE /* VVBufferPool.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VVBufferPool.framework; sourceTree = "<group>"; };
-		A5854B5120FCEEAD00DD7DEE /* HapInAVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HapInAVFoundation.framework; sourceTree = "<group>"; };
 		A5854B5420FCEED300DD7DEE /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Syphon.framework; sourceTree = "<group>"; };
 		A58EA00D1DAFB28100895E26 /* video_hap.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video_hap.mov; sourceTree = "<group>"; };
 		A590FDEC1C51775B000BED4A /* Hap-AVF-Syphon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hap-AVF-Syphon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,8 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5854B5220FCEEAD00DD7DEE /* HapInAVFoundation.framework in Frameworks */,
 				A5854B5520FCEED300DD7DEE /* Syphon.framework in Frameworks */,
+				A57968D620FF1414005A4383 /* HapInAVFoundation.framework in Frameworks */,
 				A5854B4B20FCEE7600DD7DEE /* DDMathParser.framework in Frameworks */,
 				A5854B4F20FCEE7600DD7DEE /* VVBufferPool.framework in Frameworks */,
 				A5854B4920FCEE7600DD7DEE /* VVISFKit.framework in Frameworks */,
@@ -90,11 +90,11 @@
 				A590FDEE1C51775B000BED4A /* Hap-AVF-Syphon */,
 				A590FDED1C51775B000BED4A /* Products */,
 				A590FE001C5177AF000BED4A /* BridgingHeader.h */,
+				A57968D520FF1413005A4383 /* HapInAVFoundation.framework */,
 				A5854B4620FCEE7500DD7DEE /* DDMathParser.framework */,
 				A5854B4720FCEE7500DD7DEE /* VVBasics.framework */,
 				A5854B4820FCEE7600DD7DEE /* VVBufferPool.framework */,
 				A5854B4520FCEE7500DD7DEE /* VVISFKit.framework */,
-				A5854B5120FCEEAD00DD7DEE /* HapInAVFoundation.framework */,
 				A5854B5420FCEED300DD7DEE /* Syphon.framework */,
 			);
 			sourceTree = "<group>";
