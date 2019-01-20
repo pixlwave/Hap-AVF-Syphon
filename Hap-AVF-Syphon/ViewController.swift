@@ -11,9 +11,9 @@ class ViewController: NSViewController {
     
     var player: AVPlayer?
     var hapOutput = AVPlayerItemHapDXTOutput()
-    var lastRenderedBuffer: VVBuffer?
     var size = NSSize(width: 640, height: 360)
     var syphonServer: SyphonServer?
+    var frames = [HapDecoderFrame]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class ViewController: NSViewController {
         // create the global buffer pool from the shared context
         // and keep a reference to the global buffer pool cast as a VVBufferPool
         VVBufferPool.createGlobalVVBufferPool(withSharedContext: context)
-        globalBufferPool = VVBufferPool.globalVVBufferPool() as! VVBufferPool
+        globalBufferPool = (VVBufferPool.globalVVBufferPool() as! VVBufferPool)
         
         syphonServer = SyphonServer(name: "Video", context: context!.cglContextObj, options: nil)
         
@@ -54,12 +54,14 @@ class ViewController: NSViewController {
             //	add the array of buffers to the frame's userInfo- we want the frame to retain the array of buffers...
             emptyFrame.userInfo = bufferArray
             
+            self.frames.append(emptyFrame)
+            
             return emptyFrame
         }
         
         //	make the post decode block: after decoding, i want to upload the DXT data to a GL texture via DMA, on the decode thread
         hapOutput.setPostDecode { [weak self] decodedFrame in
-                self?.finishDecodingHapFrame(decodedFrame)
+            self?.finishDecodingHapFrame(decodedFrame)
         }
         
         player = AVPlayer(url: Bundle.main.url(forResource: "video_hap", withExtension: "mov")!)
@@ -79,12 +81,12 @@ class ViewController: NSViewController {
                 
                 if let isfOutput = isfScene.allocAndRender(toBufferSized: size) {
                     syphonServer?.publishFrameTexture(isfOutput.name, textureTarget: isfOutput.target, imageRegion: isfOutput.srcRect, textureDimensions: isfOutput.size, flipped: isfOutput.flipped)
-                    lastRenderedBuffer = isfOutput
                 }
             }
         objc_sync_exit(self)
         
         globalBufferPool.housekeeping()
+        if frames.count > 2 { frames.dropFirst(frames.count - 2) }
     }
     
     func finishDecodingHapFrame(_ decodedFrame: HapDecoderFrame?) {
